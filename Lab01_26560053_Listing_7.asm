@@ -1,7 +1,8 @@
-
-# Listing 7 - three-month energy summary
 # Name: PHAM NGUYEN MINH TAM
 # Student ID: 26560053
+# LAB 01 - Step 3.3 - Listing 7
+# Purpose: Read four meter readings and print three monthly usages and their total.
+# Registers: $s0-$s3=readings 0-3; $t0-$t2=monthly usages 1-3; $t3=total; $v0=syscall selector/input result; $a0=output argument; $zero=zero.
 
 .data
 prompt: .asciiz "Enter reading (kWh): "

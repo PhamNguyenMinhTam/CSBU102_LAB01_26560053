@@ -1,5 +1,8 @@
-
-# Listing 5 - print a message and an integer
+# Name: PHAM NGUYEN MINH TAM
+# Student ID: 26560053
+# LAB 01 - Step 3.1 - Listing 5
+# Purpose: Print the string Usage (kWh): followed by integer 150 and a newline.
+# Registers: $t0=150; $a0=string address or integer to print; $v0=syscall selector; $zero=zero.
 
 .data
 msg: .asciiz "Usage (kWh): "

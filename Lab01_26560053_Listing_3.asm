@@ -1,14 +1,8 @@
-
-# Listing 3 - energy used by a household
-# Variable   Register
-# reading0   $s0
-# reading1   $s1
-# reading2   $s2
-# reading3   $s3
-# usage1     $t0
-# usage2     $t1
-# usage3     $t2
-# total      $t3
+# Name: PHAM NGUYEN MINH TAM
+# Student ID: 26560053
+# LAB 01 - Step 2.3 - Listing 3
+# Purpose: Calculate electricity usage for three months and the total in kWh.
+# Registers: $s0-$s3=readings 0-3; $t0-$t2=monthly usages 1-3; $t3=total; $zero=zero; $v0=exit service.
 
 .text
 .globl main

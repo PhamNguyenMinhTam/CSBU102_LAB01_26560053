@@ -1,5 +1,8 @@
-
-# Listing 6 - energy used between two readings
+# Name: PHAM NGUYEN MINH TAM
+# Student ID: 26560053
+# LAB 01 - Step 3.2 - Listing 6
+# Purpose: Read previous and current meter readings, then print current minus previous.
+# Registers: $s0=previous reading; $s1=current reading; $t0=usage; $v0=syscall selector/input result; $a0=output argument; $zero=zero.
 
 .data
 prompt1: .asciiz "Enter previous reading (kWh): "
