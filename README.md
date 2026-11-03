@@ -1,30 +1,31 @@
-# CSBU102 LAB 01 — 26560053
+# LAB 01 student coding exercises
 
-Student: PHAM NGUYEN MINH TAM (PHẠM NGUYỄN MINH TÂM)
+PHAM NGUYEN MINH TAM — 26560053
 
-Each folder contains one standalone MIPS program. Open and assemble one file at a time in MARS 4.5; leave “Assemble all files in directory” disabled. Enable pseudo-instructions and initialization at global main; disable delayed branching and popup input.
+Requirements were read from the complete `CSBU102_LAB01_completed.docx`; `CSBU102_LAB01(1).docx` was not present in the supplied directory. These solutions were implemented afresh from the exercise requirements, without copying the previously prepared ASM files. Only the student coding exercises are included.
 
-| Step | Listing | Source | Expected result |
-| --- | --- | --- | --- |
-| 0 | 0 | Step_0_Listing_0_Hello_MARS/Lab01_26560053_Step0_Listing0.asm | Hello, MARS! |
-| 1.2 | 1 | Step_1_2_Listing_1_Registers/Lab01_26560053_Step1_2_Listing1.asm | t0=12, t1=30, t2=t3=42, zero=0 |
-| 2.1–2.2 | 2 | Step_2_1_Listing_2_Addition/Lab01_26560053_Step2_1_Listing2.asm | t0=12; add encodes as 0x012A4020 |
-| 2.3 | 3 | Step_2_3_Listing_3_Energy_Usage/Lab01_26560053_TN2.asm | t0–t3: 150,125,165,440 |
-| 2.4 | 4 | Step_2_4_Listing_4_Translate_Statements/Lab01_26560053_Step2_4_Listing4.asm | t0–t3: 16,5,8,-3 |
-| 3.1 | 5 | Step_3_1_Listing_5_Print_Output/Lab01_26560053_Step3_1_Listing5.asm | Usage (kWh): 150 |
-| 3.2 | 6 | Step_3_2_Listing_6_Read_And_Compute/Lab01_26560053_Step3_2_Listing6.asm | Input 1200,1350: Usage (kWh): 150 |
-| 3.3 | 7 | Step_3_3_Listing_7_Three_Month_Summary/Lab01_26560053_TN3.asm | See tests below |
+| Folder | Exercise and source file |
+| --- | --- |
+| LAB01_Step_2_3_Listing_3_Energy_Usage | Step 2.3, Listing 3: `Lab01_26560053_TN2.asm` |
+| LAB01_Step_2_4_Listing_4_Arithmetic_Statements | Step 2.4, Listing 4: `Lab01_26560053_Step2_4_Listing4.asm` |
+| LAB01_Step_3_2_Listing_6_Meter_Difference | Step 3.2, Listing 6: `Lab01_26560053_Step3_2_Listing6.asm` |
+| LAB01_Step_3_3_Listing_7_Three_Month_Report | Step 3.3, Listing 7: `Lab01_26560053_TN3.asm` |
+| LAB01_Step_4_Question_4_2_Listing_NA_Print_T5 | Question 4.2 (no listing number): `Lab01_26560053_Step4_Question4_2.asm` |
 
-The required submission basenames are preserved for Experiment 2 (Listing 3) and Experiment 3 (Listing 7). Other listing filenames identify the lab, student, step and listing. Folder names identify the steps for both submission files.
+Listings 0, 1, 2 and 5 are complete examples in the handout and are excluded. Older duplicate solutions have also been removed. Step 3.4 asks for temporary experiments followed by restoration, rather than another submission program. Question 4.2 asks for an instruction sequence; its standalone wrapper initializes `$t5` to 150 and exits after the requested output.
 
-Listing 4 register plan: y=$s0, z=$s1, w=$s2; x1–x4=$t0–$t3; temporary=$t5. Listing 6: previous=$s0, current=$s1, usage=$t0.
+Open one source file at a time in MARS 4.5, assemble, then run. Enable pseudo-instructions and initialization at global `main`; disable delayed branching, popup input and assembly of all files in a directory. Enter each reading on a separate line. Listing 3 uses only `add` and `sub` for the exercise calculations, retaining `addi` for initialization. Listing 4 uses `$t5` for intermediate values. Register allocations are documented in every source header.
 
-Listing 7 tests (enter one integer per line):
+Actual MARS 4.5 command-line verification on 2026-11-03: all five new programs assembled successfully and ran. Results:
 
-- 1200, 1350, 1475, 1640 → Month 1: 150; Month 2: 125; Month 3: 165; Total: 440.
-- Student ID last digit D=3: 1060, 1189, 1304, 1450 → Month 1: 129; Month 2: 115; Month 3: 146; Total: 390.
-- Listing 6 with reversed readings 1350,1200 → Usage (kWh): -150. Input-order validation is intentionally absent, as in the LAB.
+| Program | Input | Observed result |
+| --- | --- | --- |
+| Listing 3 | fixed readings | `$t0-$t3`: 150, 125, 165, 440 |
+| Listing 4 | y=8, z=5, w=3 | `$t0-$t3`: 16, 5, 8, -3 |
+| Listing 6 | 1200, 1350 | `Usage (kWh): 150`; `$t0=150` |
+| Listing 6 / Step 3.4(a) | 1350, 1200 | `Usage (kWh): -150`; `$t0=-150` |
+| Listing 7 | 1200, 1350, 1475, 1640 | Month 1: 150; Month 2: 125; Month 3: 165; Total: 440; matching `$t0-$t3` |
+| Listing 7, D=3 | 1060, 1189, 1304, 1450 | Month 1: 129; Month 2: 115; Month 3: 146; Total: 390; matching `$t0-$t3` |
+| Question 4.2 | `$t5=150` | `150` followed by a newline |
 
-Listings 3, 4, 6 and 7 contain the completed coding exercises. Step 3.4 asks for temporary changes and restoration; the files here retain the restored programs.
-
-Source checks: eight standalone programs, headers, main entry points, exit syscalls, resolved string labels, and completed placeholders. Expected arithmetic results have been checked. Verified on 2026-11-03 using MARS 4.5 command-line mode: all eight programs assembled successfully. Listings 3 and 4 produced the register values shown above; Listing 6 passed input 1200,1350; Listing 7 passed both the sample and personal D=3 tests, including printed output and registers $t0-$t3. Tests used the global main entry point, pseudo-instructions enabled, and delayed branching disabled.
+Command pattern: `java -jar Mars4_5.jar nc sm dec ae1 se2 path/to/program.asm t0 t1 t2 t3`. Add `a` to assemble without running. Step 3.4(b/c), GUI stepping, backstepping and screenshots were not performed in this verification.
